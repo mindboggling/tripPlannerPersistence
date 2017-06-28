@@ -8,7 +8,7 @@
  * that attraction's id. Selecting an option looks up the attraction by id,
  * then tells the trip module to add the attraction.
  */
- 
+
 $(function () {
 
     // jQuery selects
@@ -17,9 +17,26 @@ $(function () {
     var $restaurantSelect = $optionsPanel.find('#restaurant-choices');
     var $activitySelect = $optionsPanel.find('#activity-choices');
 
-  // ~~~~~~~~~~~~~~~~~~~~~~~
+    // ~~~~~~~~~~~~~~~~~~~~~~~
     // This looks like a great place to start AJAX work with a request for all attractions. Don't forget that these kinds of requests are async, so we won't have all of the attractions until it comes back, but once it comes back we can make the option tags
-  // ~~~~~~~~~~~~~~~~~~~~~~~
+    // ~~~~~~~~~~~~~~~~~~~~~~~
+
+    var hotels = fetchJSON('hotels');
+    // console.log(hotels);
+    // console.log(hotelsOrg);
+    // restaurants = fetchJSON('restaurants');
+    // console.log(restaurants);
+    // activities = fetchJSON('activities');
+
+    function fetchJSON(attraction) {
+        let attractionArray = [];
+        $.get(`/api/${attraction}`)
+            .then(attractions => {
+                console.log(attractions);
+            })
+            .catch();
+        return attractionArray;
+    }
 
     // make all the option tags (second arg of `forEach` is a `this` binding)
     hotels.forEach(makeOption, $hotelSelect);
@@ -35,8 +52,8 @@ $(function () {
 
     function makeOption(databaseAttraction) {
         var $option = $('<option></option>') // makes a new option tag
-          .text(databaseAttraction.name)
-          .val(databaseAttraction.id);
+            .text(databaseAttraction.name)
+            .val(databaseAttraction.id);
         this.append($option); // add the option to the specific select
     }
 
