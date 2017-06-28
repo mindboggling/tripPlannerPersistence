@@ -7,24 +7,24 @@ var Activity = require('../models').Activity;
 
 router.get('/hotels', function (req, res, next) {
     Hotel.findAll()
-        .then(self => {
-            res.json({hotels: self});
+        .then(hotels => {
+            res.json(hotels);
         })
         .catch(next);
 });
 
 router.get('/restaurants', function (req, res, next) {
     Restaurant.findAll()
-        .then(self => {
-            res.json({restaurants: self});
+        .then(restaurants => {
+            res.json(restaurants);
         })
         .catch(next);
 });
 
 router.get('/activities', function (req, res, next) {
     Activity.findAll()
-        .then(self => {
-            res.json({activities: self});
+        .then(activities => {
+            res.json(activities);
         })
         .catch(next);
 });
