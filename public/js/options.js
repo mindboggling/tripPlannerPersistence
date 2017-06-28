@@ -21,22 +21,19 @@ $(function () {
     // This looks like a great place to start AJAX work with a request for all attractions. Don't forget that these kinds of requests are async, so we won't have all of the attractions until it comes back, but once it comes back we can make the option tags
     // ~~~~~~~~~~~~~~~~~~~~~~~
 
-    var hotels = fetchJSON('hotels');
-    // console.log(hotels);
-    // console.log(hotelsOrg);
-    // restaurants = fetchJSON('restaurants');
-    // console.log(restaurants);
-    // activities = fetchJSON('activities');
+    var hotels, restaurants, activities;
 
     function fetchJSON(attraction) {
-        let attractionArray = [];
         $.get(`/api/${attraction}`)
             .then(attractions => {
-                console.log(attractions);
+                attractions.forEach((elem) => {
+                    attractionArray.push(elem);
+                })
             })
             .catch();
-        return attractionArray;
+            return attractionArray;
     }
+
 
     // make all the option tags (second arg of `forEach` is a `this` binding)
     hotels.forEach(makeOption, $hotelSelect);

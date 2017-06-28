@@ -1,14 +1,14 @@
-$(document).ready(() => {
+// $(document).ready(() => {
 
 
-    // $.get('/api/hotels')
-    //     .then((hotels) => {
-    //         // console.log('hello');
-    //         hotels.forEach((hotel) => {
-    //             // console.log(hotel.name);
-    //         });
-    //     })
-    //     .catch(console.error.bind(console));
+//     $.get('/api/hotels')
+//         .then((hotels) => {
+//             hotels.forEach((hotel) => {
+//               const $hotelSelector = $('#hotel-choices')
+//               $hotelSelector.append(`<option>${hotel.name}</option>`);
+//             });
+//         })
+//         .catch(console.error.bind(console));
 
 
-})
+// })
